@@ -16,8 +16,9 @@ Piece::Piece(int row, int col, cinder::ColorT<float> color, bool is_alive) {
 }
 
 void Piece::CalculatePosition() {
-  position_[0] = (float)kSquareSize * col_ + kSquareSize / 2;
-  position_[1] = (float)kSquareSize * row_ + kSquareSize / 2;
+    int offset = 100;
+  position_[0] = offset + (float)kSquareSize * col_ + kSquareSize / 2;
+  position_[1] = offset + (float)kSquareSize * row_ + kSquareSize / 2;
 }
 
 void Piece::MakeKing() {
