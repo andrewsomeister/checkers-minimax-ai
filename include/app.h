@@ -18,6 +18,8 @@ class CheckersApp : public ci::app::App {
 
   void draw() override;
   void mouseDown(cinder::app::MouseEvent event) override;
+  void mouseDrag(cinder::app::MouseEvent event) override;
+  void mouseUp(cinder::app::MouseEvent event) override;
   /**
   * Uses mouse down to select a piece in a row or column
   */
@@ -43,9 +45,14 @@ class CheckersApp : public ci::app::App {
   */
   Board ComputerMove();
 
+  void DrawUI();
+  void RestartGame();
+  bool IsWithinButtonBounds(const glm::vec2& pos);
+  void UpdateSliderPosition(const glm::vec2& pos);
+
  private:
   //constants for setting up the window and board
-  const int kWindowSize = 800;
+  const int kWindowSize = 1000;
   const int kSquareSize = 100;
 
   //private variables denoting key features of the app such as a board,
@@ -55,6 +62,18 @@ class CheckersApp : public ci::app::App {
   cinder::ColorT<float> turn_;
   Piece selected_piece_;
   map<tuple<int,int>, vector<Piece>> valid_moves_;
+  std::string rules_text_;
+  ci::Rectf restart_button_;
+  ci::Rectf slider_bar_;
+  ci::Rectf slider_handle_;
+  bool is_dragging_slider_ = false;
+  int ai_lookahead_ = 4; // Default lookahead depth
+  std::vector<float> slider_snap_points_;
+  void SnapToClosestValue();
+  bool isAiTurn = false; // Flag to indicate it's AI's turn
+  bool aiDelayActive = false; // Flag to indicate the delay is active
+  double aiDelayStartTime; // Time when the delay started
+  const double aiMoveDelay = 1.0; // Delay duration in seconds
 };
 }  // namespace checkers
 #endif //CHECKERS_APP_H_
