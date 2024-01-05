@@ -76,22 +76,18 @@ void Board::CreateBoard() {
 }
 
 void Board::DrawSquares() {
-  for (int row = 0; row < kRows; row++) {
-    for (int col = 0; col < kCols; col++) {
-      if (col % 2 == ((row + 1) % 2)) {
-        ci::gl::color(ci::Color("white"));
-        ci::gl::drawSolidRect(
-            ci::Rectf(vec2(kSquareSize * row, kSquareSize * col),
-                      vec2(kSquareSize * (row + 1), kSquareSize * (col + 1))));
-      } else {
-        ci::gl::color(ci::Color("red"));
-        ci::gl::drawSolidRect(
-            ci::Rectf(vec2(kSquareSize * row, kSquareSize * col),
-                      vec2(kSquareSize * (row + 1), kSquareSize * (col + 1))));
-      }
+    int offset = 100;  // Offset to center the board in the window
+    for (int row = 0; row < kRows; row++) {
+        for (int col = 0; col < kCols; col++) {
+            ci::Color square_color = (col % 2 == ((row + 1) % 2)) ? ci::Color("white") : ci::Color("red");
+            ci::gl::color(square_color);
+            ci::gl::drawSolidRect(
+                ci::Rectf(vec2(offset + kSquareSize * col, offset + kSquareSize * row),
+                    vec2(offset + kSquareSize * (col + 1), offset + kSquareSize * (row + 1))));
+        }
     }
-  }
 }
+
 
 Piece Board::GetPiece(int row, int col) {
   return board_[row][col];
