@@ -1,7 +1,15 @@
 # Checkers Minimax Algorithm
 
 ## Run the game
-To run the project, you must simply download and run checkers_game.exe!
+To run the project, you must simply download and run checkers_game.exe! 
+
+Although the file contains no viruses of any kind, Windows flags this download as an "unrecognized" file. If you would rather watch a demo, click on the image below!
+
+## Demo
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=D6eV1rBcAt0" target="_blank">
+ <img src="http://img.youtube.com/vi/D6eV1rBcAt0/maxresdefault.jpg" alt="Watch the video" width="320" height="180" border="10" />
+</a>
 
 ## Description
 This project implements the minimax algorithm to create a checkers AI. It is made up of 
